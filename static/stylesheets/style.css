@@ -1,0 +1,16 @@
+/*
+* Main style
+*/
+::selection {color:#fff; background-color: #c09202;}
+::-moz-selection {color:#fff; background-color: #c09202;}
+::-webkit-selection {color:#fff; background-color: #c09202;}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+svg {
+  font: 10px sans-serif;
+}

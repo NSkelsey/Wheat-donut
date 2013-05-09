@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>D3 Demo</title>
+  <script type="text/javascript" src="/static/javascript/d3.v3.min.js"></script>
+  <script type="text/javascript" src="/static/javascript/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="/static/javascript/cubism.v1.js"></script>
+</head>
+<body>
+  <script>
+    var data = [10,20,30,40,50];
+   
+    var w = 500,
+    	h = 50;
+
+    var svg = d3.select("body")
+     			.append("svg")
+     			.attr("width",w)
+     			.attr("height",h);
+    
+    var circles = svg.selectAll("circle")
+				       .data(data)
+				       .enter()
+				       .append("circle");
+	circles.attr("cx", function(d, i){
+		console.log(d);
+		return (i*50)+25;
+		})
+			.attr("cy",h/2)
+			.attr("r", function(d){
+				return d/2;
+			});
+
+  </script>
+</body>
+</html>
