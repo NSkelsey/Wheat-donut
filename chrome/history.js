@@ -1,52 +1,35 @@
+var blacklist = {"facebook":0,
+                 "youtube":0,
+                 "reddit":0,
+                 "twitter":0,
+                 "techcrunch":0,
+                 "instagram":0,
+                 "news.ycombinator":0};
 
-function by_visits(a, b){
-    return b.visitCount - a.visitCount;
+function early_date(results){
+    for(var i = 0;i<results.length;i++){      
+        clean_url(results[i].url);
+    }
+    for (var key in blacklist) {
+        $("#history").append(key + ": " + blacklist[key]  + "</br>");
+    }
 }
 
-function print_all (items){
-    var sum = 0 
-    for (var i = 0; i < items.length; ++i){
-        sum = items[i].visitCount + sum;
+function clean_url(url){
+    var prodlist = 0;
+    var blackList = "(facebook|youtube|reddit|twitter|techcrunch|instagram|news\.ycombinator)(.com)"
+    var matchURL = new RegExp(blackList);
+        matchURL.pass = matchURL.test(url),
+        matchURL.url = matchURL.exec(url);
+    
+    if (matchURL.pass){
+        blacklist[matchURL.url[1]] += 1;
+    } else {
+       prodlist += 1; 
     }
-    var max = items.sort(by_visits);
-    var html = '<ul>';
-    for (var i = 0; i < max.length; ++i){
-    html = html + '\n<li>' + max[i].visitCount  + '\t' + max[i].url;
-    }
-    html = html + '</ul>';
-    document.write(sum)
-    document.write('<br>'+items.length)
-    document.write(html);
 }
 
-function early_date(items){
-    function by_date(a, b){
-      return a.visitTime, b.visitTime;
-    }
-    var allVisits = [];
-    var j = 0;
-    items.forEach(function(item) {
-     chrome.history.getVisits({url:item.url}, 
-        function(vItems){
-          allVisits.push.apply(allVisits, vItems);
-          j = j + vItems.length;
-     });
-    });
-    var earliest = allVisits.sort(by_date).slice(1,20)
-    var html = '<ul>';
-    for (var i = 0; i < earliest.length; ++i){
-      html = html + '\n<li>' + earliest[i].url
-    }
-    html = html + j + 'FINISHED</ul>';
-    document.write(html)
-}
-
-chrome.history.search({
-  'text': '',
-  //'maxResults': 99999999,
-  'maxResults': 300,
-  'startTime': 0,
-  },
-early_date)
-
-
+chrome.history.search(
+  {'text': '',
+   'startTime': 60},
+  early_date);

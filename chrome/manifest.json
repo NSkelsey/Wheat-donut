@@ -6,5 +6,9 @@
   "chrome_url_overrides": {
     "newtab": "main.html"
   },
+  "content_scripts": [{
+    "matches":["http://*/*"],  
+  	"js": ["jquery-1.10.0.min.js","history.js"]
+  }],
   "manifest_version": 2
 }
