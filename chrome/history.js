@@ -10,9 +10,8 @@ function early_date(results){
     for(var i = 0;i<results.length;i++){      
         clean_url(results[i].url);
     }
-    for (var key in blacklist) {
-        $("#history").append(key + ": " + blacklist[key]  + "</br>");
-    }
+    console.log(blacklist["facebook"]);
+    plotter(JSON.stringify(blacklist));
 }
 
 function clean_url(url){

@@ -9,6 +9,14 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	font-size: 300%;
 	margin: 0 0 20px 0;	
 }
+canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 800px;
+}
 #content{
     width:100%;
     padding:0;
@@ -19,4 +27,5 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	text-align: center;
 	font-family: sans-serif;
 	font-size:100%;
+    display:none;
 }
