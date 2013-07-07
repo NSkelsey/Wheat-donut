@@ -15,7 +15,7 @@ $(document).ready(function() {
 //	},
 //	{
 //		value : 100,
-//		color : "#D4CCC5"
+////		color : "#D4CCC5"
 //	},
 //	{
 //		value : 40,
@@ -38,7 +38,9 @@ $(document).ready(function() {
         {value: preData["instagram"], 
          color: "#2E2360"},
         {value: preData["news.ycombinator"], 
-         color: "#2D6FAE"}
+         color: "#2D6FAE"},
+        {value: preData["allother"], 
+         color: "#000000"}
     ];
     var chart0 = new Chart(temp).Doughnut(data);
     console.log("INSIDE");
