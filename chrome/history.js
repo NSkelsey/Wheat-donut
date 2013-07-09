@@ -214,6 +214,9 @@ var blacklist = {"facebook":0,
 
     setTimeout(function(){
       console.log(full_hist.length);
+      /************************************
+      * Main Graph creating funcs are here*
+      *************************************/
       time_series(full_hist);
       make_v2_donut(results);
       make_exp_bar(results);
