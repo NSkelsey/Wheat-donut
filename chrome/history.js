@@ -29,25 +29,53 @@ function clean_url(url){
   }
 }
 
-function time_series(full_hist){
+
+function day_buckets(full_hist){
+  function by_date(a, b){
+    return a.visitTime - b.visitTime;
+  }
+  full_hist = full_hist.sort(by_date)
   var data = []
   var tmp = new Date(0);
   var yesterday = tmp.getDay();
-  console.log(full_hist[123]);
+  console.log(full_hist.length);
   for (var i = 0; i < full_hist.length; i++){
     var visit = full_hist[i];
-    console.log(visit);
-    curday = (new Date(visit.lastVisitTime)).getDay();
-    if (curday != yesterday) {
-      data.push(1);
-      yesterday = curday;
+    curday = (new Date(visit.visitTime)).getDay();
+    if (visit.transition == 'link'  || visit.transition == 'typed'){
+      if (curday != yesterday) {
+        data.push(1);
+        yesterday = curday;
+      } else {
+        data.push(1 + data.pop());
+      }
     } else {
-      data.push(1 + data.pop());
+        //filtered
     }
   }
+  return data
+}
+
+
+function bucket_hours(full_hist){
+    var data = Array(24);
+    for (var i = 0; i < data.length; i++){
+        data[i] = 0;
+    }
+    for (var j = 1; j < full_hist.length; j++){
+        msecs = full_hist[j].visitTime;
+        hour = (new Date(msecs)).getHours();
+        data[hour] += 1;
+    }
+    return data;
+}
+
+function time_series(full_hist){
+  data = bucket_hours(full_hist)
+  console.log(data.length);
   var lbls = [];
-  for (var i = 1; i <= data.length; i++) {
-    lbls.push(i);
+  for (var m = 1; m <= data.length; m++) {
+    lbls.push(m);
   }
   var data = {
     labels : lbls,
@@ -60,49 +88,37 @@ function time_series(full_hist){
     ],
   };
   var ctx = $('#timeseries')[0].getContext('2d');
-  B = new Chart(ctx).Bar(data);
+  new Chart(ctx).Bar(data);
 }
 
 
-function build_full_hist(results){
+function build_and_use_hist(results){
     full_hist = [];
     var decr = results.length;
-//    results.forEach(function(item) {
-//     chrome.history.getVisits({url:item.url}, 
-//        function(vItems){
-//          full_hist.push.apply(full_hist, vItems);
-//          decr -= 1;
-//     });
-//    });
-    function by_date(a, b){
-      return a.visitTime, b.visitTime;
-    }
-//
-//    while (decr > 10){
-//        var num = 1337*3;
-//    }
-//    return full_hist;
-//  setTimeout(function(){
-//    full_hist.sort(by_date);
-//    console.log(full_hist.length);
-//    return full_hist;
-//  }, 5000);
-    return results;
+    results.forEach(function(item) {
+     chrome.history.getVisits({url:item.url}, 
+        function(vItems){
+          full_hist.push.apply(full_hist, vItems);
+     });
+    });
+
+  setTimeout(function(){
+    console.log(full_hist.length);
+    time_series(full_hist);
+  }, 1000);
 }
 
 
 function callback(results){
   early_date(results);
-  var hist = build_full_hist(results);
+  build_and_use_hist(results)
   console.log(hist.length);
-  time_series(hist);
 }
 
-var d;
 
 chrome.history.search(
   {'text': '',
-    'maxResults': 9999999,
+    'maxResults': 3000,
     'startTime': 0},
     callback);
 
