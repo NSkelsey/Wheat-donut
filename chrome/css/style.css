@@ -1,19 +1,83 @@
 /* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
 /* End of Reset */
-#header {
+/*#header {
 	color: #cccccc;
 	vertical-align: 50%;
 	text-align: center;
-	font-family: sans-serif;
+	
 	font-size: 300%;
 	margin: 0 0 20px 0;	
+}*/
+/*canvas:{
+	display: inline;;
+}*/
+
+body{
+	background-color: #ecf0f1;
+}
+.explain{
+	font-family: 'Raleway';
+	font-size:2.5em;
+	font-weight:100;
+	text-align: center;
+	margin-bottom: 30px;
+}
+section{
+	height:900px;
+}
+
+
+span{
+	margin-left:10px;
+	font-weight: 500;
+	font-size: 1em;
+}
+.legend{
+	/*background-color:gray;*/
+	width: 100%;
+	/*margin-top:3px;*/
+	/*margin-right:3px;*/
+	margin-bottom:3px;
+}
+.first {
+	margin-top: 3px;
+}
+.dna{
+	height:60px;
+	width:60px;
+	background-color:red;
+	position: relative;
+	float:left;
+}
+#wheat{
+	text-align: center;
+	vertical-align: middle;
+	margin:10% 0 0 0;
+}
+.story { 
+
+/*	height: 900px; 
+	padding: 0; 
+	margin: 0; 
+	width: 100%; 
+	max-width: 1920px; 
+	position: relative; 
+	margin: 0 auto; 
+	border-top: 1px solid rgba(255,255,255,0.3); 
+	border-bottom: 1px solid rgba(0,0,0,0.4); 
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);*/
+}
+.next{
+	text-align: center;
+	position: relative;
 }
 canvas {
     padding-left: 0;
     padding-right: 0;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom:5%;
     display: block;
     width: 800px;
 }

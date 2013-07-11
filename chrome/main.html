@@ -4,20 +4,82 @@
   <meta name="description" content="Wheat donut - chart.js challengepost entry">
   <meta name="author" content="Duylam Nguyen-Ngo 'n Nick Skelsey">
   <link rel="stylesheet" href="/css/style.css">
-  <script type="text/javascript" src="chart/Chart.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:200,100' rel='stylesheet' type='text/css'>
+  <!-- <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.0/pure-min.css"> -->
+  <link rel="stylesheet" href="/css/pure-min.css">
+  <script type="text/javascript" src="/chart/Chart.js"></script>
   <script type="text/javascript" src="jquery-1.10.0.min.js"></script>
   <script type="text/javascript" src="history.js"></script>
   <script type="text/javascript" src="datamap.js"></script>    
 </head>
 <body>
-<div class="page">
-  <div id="header">wheat donut</div>
-  <canvas id="chart" width="400" height="400"></canvas>
-  <canvas id="expchart" width="1000" height="600"></canvas>
-  <canvas id="timeseries" width="1000" height="400"></canvas>
-  <div id="content">
-      <div id="history"></div>
-  </div>
+<div class="container">
+  <section id="zero">
+    <div id="wheat">
+      <img src="wheat2.png" height="400">
+    </div>
+    <div class="next"><a href="#one">to one</a></div>
+  </section>
+  <section id="one">
+      <div class="explain">
+        <h2>Common time wasters</h2>
+      </div>
+      <div class="pure-g-r" style="margin-bottom:15px;">
+          <canvas id="chart" width="400" height="400"></canvas>
+      </div>    
+      <div class="pure-g-r">
+        <!-- <div class="pure-u-19-24 LEG"> -->
+          
+            <div class="pure-u-1-4 legend first">
+              <div class="dna" style="background-color:#32506d;"></div>
+              <span>Tumblr</span>
+            </div>
+            <div class="pure-u-1-4 legend">
+              <div class="dna" style="background-color:#3B5998;"></div>
+              <span>Facebook</span>
+            </div>
+          
+            <div class="pure-u-1-4 legend">
+              <div class="dna" style="background-color:#CD332D;"></div>
+              <span>Youtube</span>
+            </div>
+            <div class="pure-u-1-4 legend">
+              <div class="dna" style="background-color:#114475;"></div>
+              <span>Reddit</span>
+            </div>                
+                        <div class="pure-u-1-4 legend first">
+              <div class="dna" style="background-color:#4099FF;"></div>
+              <span>Twitter</span>
+            </div>
+            <div class="pure-u-1-4 legend">
+              <div class="dna" style="background-color:#008C00;"></div>
+              <span>Techcrunch</span>
+            </div>
+            <div class="pure-u-1-4 legend">
+              <div class="dna" style="background-color:#FF6500;"></div>
+              <span>Y Combinator</span>
+            </div>
+            <div class="pure-u-1-4 legend">
+              <div class="dna" style="background-color:#EDCC92;"></div>
+              <span>Everything else</span>
+            </div>
+      </div>
+      <div class="next"><a href="#two">to one</a></div>
+    </section>    
+  <section id="two">
+      <div class="explain">
+        <h2>Frequently Visited Websites</h2>
+      </div>    
+    <div class="story">
+      <canvas id="expchart" width="1000" height="600"></canvas>
+      <a href="#three">to one</a>
+    </div>
+  </section>  
+  <section id="three">
+    <div class="story">
+      <canvas id="timeseries" width="1000" height="400"></canvas>
+    </div>
+  </section>  
 </div>
 </body>
 </html>
