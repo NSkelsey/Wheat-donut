@@ -1,4 +1,4 @@
-var MAXRES = 2000;
+var MAXRES = 10000;
 
 function parseUri (str) {
   var	o   = parseUri.options,
@@ -33,7 +33,7 @@ var blacklist = {"facebook":0,
   "youtube":0,
   "reddit":0,
   "twitter":0,
-  "techcrunch":0,
+  "google":0,
   "tumblr":0,
   "news.ycombinator":0,
   "allother":0};
@@ -133,7 +133,7 @@ $(document).ready(function() {
          color: "#114475"},
         {value: preData["twitter"],
          color: "#4099FF"},
-        {value: preData["techcrunch"], 
+        {value: preData["google"], 
          color: "#008C00"},
         {value: preData["news.ycombinator"], 
          color: "#FF6500"},
@@ -153,7 +153,7 @@ $(document).ready(function() {
   }
 
   function clean_url(url){
-    var blackList = "(facebook|youtube|reddit|twitter|techcrunch|tumblr|news\.ycombinator)(.com)"
+    var blackList = "(facebook|youtube|reddit|twitter|google|tumblr|news\.ycombinator)(.com)"
     var matchURL = new RegExp(blackList);
     matchURL.pass = matchURL.test(url),
     matchURL.url = matchURL.exec(url);
@@ -257,7 +257,7 @@ $(document).ready(function() {
       time_series(full_hist);
       make_donut(results);
       make_exp_bar(results);
-    }, 1000);
+    }, 4000);
   }
 
 
